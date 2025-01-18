@@ -289,6 +289,11 @@ impl Allocator {
         ffi::vmaSetAllocationUserData(self.internal, allocation.0, user_data);
     }
 
+    /// Sets the name of the allocation
+    pub fn set_allocation_name(&self, allocation: &mut Allocation, name: &core::ffi::CStr) {
+        unsafe { ffi::vmaSetAllocationName(self.internal, allocation.0, name.as_ptr()) };
+    }
+
     /// Maps memory represented by given allocation and returns pointer to it.
     ///
     /// Maps memory represented by given allocation to make it accessible to CPU code.
