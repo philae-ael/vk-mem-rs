@@ -34,6 +34,9 @@ fn main() {
     //#define VMA_DEBUG_INITIALIZE_ALLOCATIONS 1
     //#define VMA_DEBUG_MIN_BUFFER_IMAGE_GRANULARITY 256
 
+    #[cfg(feature = "log_leaks")]
+    build.define("WITH_VMA_LOG_LEAK", "1");
+
     #[cfg(feature = "recording")]
     build.define("VMA_RECORDING_ENABLED", "1");
 
@@ -80,7 +83,7 @@ fn main() {
             .flag("-Wno-missing-field-initializers")
             .flag("-Wno-unused-variable")
             .flag("-Wno-unused-parameter")
-            .flag("-Wno-unused-private-field")
+            .flag("-Wno-unused-function")
             .flag("-Wno-reorder")
             .cpp_link_stdlib("stdc++")
             .cpp(true);
