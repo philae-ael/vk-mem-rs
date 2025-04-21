@@ -226,7 +226,7 @@ bitflags! {
 
 bitflags! {
     /// Flags for configuring `Allocation` construction.
-    #[derive(Clone, Copy)]
+    #[derive(Debug, Clone, Copy)]
     pub struct AllocationCreateFlags: u32 {
         /// Set this flag if the allocation should have its own memory block.
         ///
